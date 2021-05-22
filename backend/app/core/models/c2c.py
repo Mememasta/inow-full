@@ -19,7 +19,6 @@ class C2C(ormar.Model):
     is_rented: bool = ormar.Boolean(default=False)
 
     user: Optional[User] = ormar.ForeignKey(User, virtual=False, nullable=True)
+
     
-    # owner_name: str = ormar.String(max_length=32)
-    # phone_number: str = ormar.String(max_length=)
 

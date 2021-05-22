@@ -26,7 +26,7 @@ async def get_events(
     events = await crud.sport_event.get_multy()
     return events
 
-@router.post("/create", response_model=schemas.SportEventCreate)
+@router.post("/create", response_model=schemas.SportEventSchema)
 async def create_event(
     *,
     schema: schemas.SportEventCreate,
@@ -35,7 +35,15 @@ async def create_event(
     event = await crud.sport_event.create(schema=schema, user=current_user)
     return event
 
-@router.put("/update/{event_id}", response_model=schemas.SportEventUpdate)
+@router.get("/to_participate/{event_id}", response_model=schemas.SportEventSchema)
+async def to_participate(
+        *,
+        event_id: int,
+        current_user: models.User = Depends(deps.get_current_active_user)
+):
+    return await crud.sport_event.to_participate(event_id=event_id, user=current_user)
+
+@router.put("/update/{event_id}", response_model=schemas.SportEventSchema)
 async def update_event(
     *,
     event_id: int,
@@ -45,7 +53,7 @@ async def update_event(
     get_event = await crud.sport_event.get(id=event_id)
     if not get_event:
         raise HTTPException(status_code=404, detail="Event not found")
-    if get_event.user.id == current_user.id:
+    if get_event.organizer.id == current_user.id:
         return await crud.sport_event.update(id=event_id, schema=schema)
     if not await crud.user.is_superuser(current_user):
         raise HTTPException(
@@ -67,7 +75,7 @@ async def delete_event(
             detail="The event with this id does not exists in the system"
         )
 
-    if event.user.id == current_user.id:
+    if event.organizer.id == current_user.id:
         del_event = await crud.sport_event.delete(id=event_id)
         return del_event
     if not await crud.user.is_superuser(current_user):

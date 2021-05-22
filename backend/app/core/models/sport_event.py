@@ -20,5 +20,5 @@ class SportEvent(ormar.Model):
     checked: bool = ormar.Boolean(default=False)
 
 
-    members: List[User] = ormar.ForeignKey(User, related_name="members", nullable=True)
     organizer: Optional[User] = ormar.ForeignKey(User, related_name="organizer", nullable=True)
+    members: List[User] = ormar.ManyToMany(User, related_name="members", nullable=True)

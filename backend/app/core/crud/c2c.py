@@ -16,15 +16,11 @@ class CRUDUser(CRUDBase[C2C, C2CCreate, C2CUpdate]):
         get_rents = await self.model.objects.select_related("user").all()
         return get_rents
 
-    async def create(self, schema: Union[C2CCreate, Dict[str, Any]], user: models.User) -> C2C:
-        if isinstance(schema, dict):
-            update_data = schema
-        else:
-            update_data = schema.dict(exclude_unset=True)
-        update_data["user"] = user
-        print(update_data)
+    async def create(self, schema: C2CCreate, user: models.User) -> C2C:
+        obj_in_data = jsonable_encoder(schema)
+        obj = C2C(**obj_in_data, user=user)
 
-        return await super().create(update_data)
+        return await super().create(obj)
     
 
 c2c = CRUDUser(C2C)

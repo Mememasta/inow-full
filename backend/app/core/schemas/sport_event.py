@@ -25,8 +25,8 @@ class SportEventUpdate(SportEventBase):
 class SportEventSchema(SportEventBase):
     id: Optional[int]
 
-    members: List[schemas.UserSchema]
     organizer: Optional[schemas.UserSchema]
+    members: List[schemas.UserSchema]
     
     class Config:
         orm_mode = True

@@ -4,7 +4,7 @@ from pydantic import BaseModel, EmailStr
 
 class UserBase(BaseModel):
     email: EmailStr
-    phone_number: int
+    phone_number: str
     first_name: str
     second_name: str
     is_superuser: Optional[bool] = False

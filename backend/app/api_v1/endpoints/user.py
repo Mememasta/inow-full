@@ -31,11 +31,11 @@ async def get_user_by_id(
         )
     return user_by_id
 
-@router.get("/me", response_model=Optional[schemas.UserSchema])
-async def get_user_me(
-    current_user: models.User = Depends(deps.get_current_active_user)
-) -> Optional[models.User]:
-    return current_user
+# @router.get("/me", response_model=Optional[schemas.UserSchema])
+# async def get_user_me(
+    # current_user: models.User = Depends(deps.get_current_active_user)
+# ) -> Optional[models.User]:
+    # return current_user
 
 @router.get("/", response_model=List[schemas.UserSchema])
 async def get_users(
@@ -87,24 +87,24 @@ async def update_user(
         )
     return update_user
 
-@router.put("/update/me", response_model=Optional[schemas.UserSchema])
-async def update_user_me(
-        *, 
-        email: EmailStr = Body(None),
-        password: str = Body(None),
-        current_user: models.User = Depends(deps.get_current_active_user)
-) -> Optional[models.User]:
-    current_user_data = jsonable_encoder(current_user)
-    schema = schemas.UserUpdate(**current_user_data)
-    if password is not None:
-        schema.password = password
-    else:
-        schema.password = ""
-    if email is not None:
-        schema.email = email
-    else:
-        schema.email = current_user.email
-    return await crud.user.update(id=current_user.id, schema=schema)
+# @router.put("/update/me", response_model=Optional[schemas.UserSchema])
+# async def update_user_me(
+        # *, 
+        # email: EmailStr = Body(None),
+        # password: str = Body(None),
+        # current_user: models.User = Depends(deps.get_current_active_user)
+# ) -> Optional[models.User]:
+    # current_user_data = jsonable_encoder(current_user)
+    # schema = schemas.UserUpdate(**current_user_data)
+    # if password is not None:
+        # schema.password = password
+    # else:
+        # schema.password = ""
+    # if email is not None:
+        # schema.email = email
+    # else:
+        # schema.email = current_user.email
+    # return await crud.user.update(id=current_user.id, schema=schema)
 
 @router.delete("/delete/{user_id}", response_model=Optional[models.User])
 async def delete_user(
@@ -120,18 +120,18 @@ async def delete_user(
         )
     return del_user
 
-@router.delete("/delete/me", response_model=Optional[models.User])
-async def delete_user_me(
-    *,
-    email: EmailStr = Body(None),
-    password: str = Body(None),
-    current_user: models.User = Depends(deps.get_current_active_user)
-) -> Optional[models.User]:
-    user = await crud.user.authenticate(email=email, password=password)
-    if user.id == current_user.id:
-        del_user = await crud.user.delete(id=current_user.id)
-        return del_user 
-    raise HTTPException(
-        status_code=404,
-        detail="Incorrect email or password"
-    )
+# @router.delete("/delete/me", response_model=Optional[models.User])
+# async def delete_user_me(
+    # *,
+    # email: EmailStr = Body(None),
+    # password: str = Body(None),
+    # current_user: models.User = Depends(deps.get_current_active_user)
+# ) -> Optional[models.User]:
+    # user = await crud.user.authenticate(email=email, password=password)
+    # if user.id == current_user.id:
+        # del_user = await crud.user.delete(id=current_user.id)
+        # return del_user 
+    # raise HTTPException(
+        # status_code=404,
+        # detail="Incorrect email or password"
+    # )

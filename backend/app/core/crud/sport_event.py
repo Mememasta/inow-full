@@ -10,25 +10,25 @@ from app.core import crud, models
 
 class CRUDUser(CRUDBase[SportEvent, SportEventCreate, SportEventUpdate]):
     async def get(self, id: int) -> Optional[SportEvent]:
-        get_event = await self.model.objects.select_related("organizer").select_related("members").get_or_none(pk=id)
+        get_event = await self.model.objects.select_related(["organizer", "members"]).get_or_none(pk=id)
         return get_event
 
     async def get_multy(self) -> Optional[SportEvent]:
-        get_events = await self.model.objects.select_related("organizer").select_related("members").all()
+        get_events = await self.model.objects.select_related(["members", "organizer"]).all()
         return get_events
 
-    async def create(self, schema: Union[SportEventCreate, Dict[str, Any]], user: models.User) -> SportEvent:
-        if isinstance(schema, dict):
-            update_data = schema
-        else:
-            update_data = schema.dict(exclude_unset=True)
-        update_data["organizer"] = user
-        update_data["members"] = user
-        print(update_data)
+    async def create(self, schema: SportEventCreate, user: models.User) -> SportEvent:
+        obj_in_data = jsonable_encoder(schema)
+        obj = SportEvent(**obj_in_data, organizer=user)
+        event = await super().create(obj)
+        obj_in_db = await event.members.add(user)
+        return event
 
-        return await super().create(update_data)
-
-    async def to_participate(self, schema: SportEventSchema, user: models.User):
-        pass
+    async def to_participate(self, event_id: int, user: models.User) -> Any:
+        get_event = await self.get(id=event_id)
+        await get_event.members.add(user)
+        return get_event
+        
+        
 
 sport_event = CRUDUser(SportEvent)
