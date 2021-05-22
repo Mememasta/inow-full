@@ -17,7 +17,8 @@ class C2C(ormar.Model):
     description: str = ormar.String(max_length=512)
     cost: int = ormar.Integer()
     is_rented: bool = ormar.Boolean(default=False)
-    users: Optional[User] = ormar.ForeignKey(User, nullable=True)
+
+    user: Optional[User] = ormar.ForeignKey(User, virtual=False, nullable=True)
     
     # owner_name: str = ormar.String(max_length=32)
     # phone_number: str = ormar.String(max_length=)

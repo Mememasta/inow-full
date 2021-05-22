@@ -21,7 +21,7 @@ class C2CUpdate(C2CBase):
 
 class C2CSchema(C2CBase):
     id: Optional[int]
-    users: Optional[schemas.UserSchema]
+    user: Optional[schemas.UserSchema]
 
     class Config:
         orm_mode = True

@@ -9,7 +9,7 @@ from app.api_v1 import deps
 router = APIRouter()
 
 
-@router.get("/{user_id}", response_model=Optional[schemas.C2CSchema])
+@router.get("/{rent_id}", response_model=Optional[schemas.C2CSchema])
 async def get_rent_by_id(
         *,
         rent_id: int,
@@ -41,83 +41,50 @@ async def create_rent(
         schema: schemas.C2CCreate,
         current_user: models.User = Depends(deps.get_current_active_user)
 ) -> models.C2C:
-    return await crud.c2c.create(schema=schema)
+    return await crud.c2c.create(schema=schema, user=current_user)
 
-# @router.post("/open/create", response_model=schemas.UserSchema)
-# async def create_user_open(
-        # *,
-        # email: EmailStr = Body(...),
-        # password: str = Body(...)
-# ) -> models.User:
-    # user = await crud.user.get_by_email(email=email)
-    # if user:
-        # raise HTTPException(
-            # status_code=400,
-            # detail="The user with this email already exists in the system"
-        # )
-    # schema = schemas.UserCreate(password=password, email=email)
-    # return await crud.user.create(schema=schema)
+@router.put("/update/{rent_id}", response_model=Optional[schemas.C2CSchema])
+async def update_user(
+        *,
+        rent_id: int,
+        schema: schemas.C2CUpdate,
+        current_user: models.User = Depends(deps.get_current_active_user)
+) -> Optional[models.C2C]:
+    rent = await crud.c2c.get(id=rent_id)
+    if not rent:
+        raise HTTPException(
+            status_code=404,
+            detail="The rent with this id does not exists in the system"
+        )
 
-# @router.put("/update/{user_id}", response_model=Optional[schemas.UserSchema])
-# async def update_user(
-        # *,
-        # user_id: int,
-        # schema: schemas.UserUpdate,
-        # current_user: models.User = Depends(deps.get_current_active_superuser)
-# ) -> Optional[models.User]:
-    # update_user = await crud.user.update(id=user_id, schema=schema)
-    # if not update_user:
-        # raise HTTPException(
-            # status_code=404,
-            # detail="The user with this id does not exists in the system"
-        # )
-    # return update_user
+    if rent.user.id == current_user.id:
+        update_rent = await crud.c2c.update(id=rent_id, schema=schema)
+        return update_rent
 
-# @router.put("/update/me", response_model=Optional[schemas.UserSchema])
-# async def update_user_me(
-        # *, 
-        # email: EmailStr = Body(None),
-        # password: str = Body(None),
-        # current_user: models.User = Depends(deps.get_current_active_user)
-# ) -> Optional[models.User]:
-    # current_user_data = jsonable_encoder(current_user)
-    # schema = schemas.UserUpdate(**current_user_data)
-    # if password is not None:
-        # schema.password = password
-    # else:
-        # schema.password = ""
-    # if email is not None:
-        # schema.email = email
-    # else:
-        # schema.email = current_user.email
-    # return await crud.user.update(id=current_user.id, schema=schema)
+    if not await crud.user.is_superuser(current_user):
+        raise HTTPException(
+                status_code=400,
+                detail="The rent doesn't have enough privileges"
+        )
 
-# @router.delete("/delete/{user_id}", response_model=Optional[models.User])
-# async def delete_user(
-        # *,
-        # user_id: int,
-        # current_user: models.User = Depends(deps.get_current_active_superuser)
-# ) -> Any:
-    # del_user = await crud.user.delete(id=user_id)
-    # if not del_user:
-        # raise HTTPException(
-            # status_code=404,
-            # detail="The user does not exist"
-        # )
-    # return del_user
+@router.delete("/delete/{rent_id}", response_model=Optional[schemas.C2CSchema])
+async def delete_user(
+        *,
+        rent_id: int,
+        current_user: models.User = Depends(deps.get_current_active_user)
+) -> Any:
+    rent = await crud.c2c.get(id=rent_id)
+    if not rent:
+        raise HTTPException(
+            status_code=404,
+            detail="The rent with this id does not exists in the system"
+        )
 
-# @router.delete("/delete/me", response_model=Optional[models.User])
-# async def delete_user_me(
-    # *,
-    # email: EmailStr = Body(None),
-    # password: str = Body(None),
-    # current_user: models.User = Depends(deps.get_current_active_user)
-# ) -> Optional[models.User]:
-    # user = await crud.user.authenticate(email=email, password=password)
-    # if user.id == current_user.id:
-        # del_user = await crud.user.delete(id=current_user.id)
-        # return del_user 
-    # raise HTTPException(
-        # status_code=404,
-        # detail="Incorrect email or password"
-    # )
+    if rent.user.id == current_user.id:
+        del_rent = await crud.c2c.delete(id=rent_id)
+        return del_rent
+    if not await crud.user.is_superuser(current_user):
+        raise HTTPException(
+                status_code=400,
+                detail="The rent doesn't have enough privileges"
+        )

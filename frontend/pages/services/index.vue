@@ -59,7 +59,7 @@ export default {
   width: 48%;
   padding: 2%;
   border-radius: 25px;
-  background: #f5f5f5;
+  background: #defcf7;
 }
 
 

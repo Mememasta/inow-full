@@ -4,7 +4,7 @@
     <hr>
 
     <div>
-
+      <img src="@/assets/img/map_sport_object.png" width="100%" style="margin:1% 0%">
     </div>
    
   </div>

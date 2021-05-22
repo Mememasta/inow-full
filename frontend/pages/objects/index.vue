@@ -1,16 +1,48 @@
 <template>
   <div class="container" style="margin-top:25px">
-    <h1> Спортивный объекты </h1>
+    <h1> Спортивный объекты. Новый Уренгой </h1>
     <hr>
 
     <div class="object_block">
 
       <div class="object_block_1 zoom">
-        <NuxtLink to="/objects/id" class="non_decoration">
+        <NuxtLink to="/objects/id_1" class="non_decoration">
           <div>
-            <h2>Коробка</h2>
+            <h2> Футбольная площадка </h2>
             <hr>
-            <h3> ул Удмуртска 23</h3>
+            <h4> Новый Уренгой, 4-й микрорайон </h4>
+          </div>
+        </NuxtLink>
+      </div>
+
+      <div class="object_block_1 zoom">
+        <NuxtLink to="/objects/id_1" class="non_decoration">
+          <div>
+            <h2>Баскетбольная площадка</h2>
+            <hr>
+            <h4> Новый Уренгой, 3-й микрорайон </h4>
+          </div>
+        </NuxtLink>
+      </div>
+
+
+      <div class="object_block_1 zoom">
+        <NuxtLink to="/objects/id_1" class="non_decoration">
+          <div>
+            <h2>Воркаут</h2>
+            <hr>
+            <h4> Новый Уренгой, микрорайон Оптимистов </h4>
+          </div>
+        </NuxtLink>
+      </div>
+
+
+      <div class="object_block_1 zoom">
+        <NuxtLink to="/objects/id_1" class="non_decoration">
+          <div>
+            <h2>Хоккейная площадка</h2>
+            <hr>
+            <h4> Новый Уренгой, 1-й микрорайон</h4>
           </div>
         </NuxtLink>
       </div>
@@ -45,10 +77,11 @@ export default {
 }
 
 .object_block_1{
-  width: 100%;
+  width: 48%;
   padding: 2%;
   border-radius: 25px;
-  background: #f5f5f5;
+  background: #defcf7;
+  margin: 1%;
 }
 
 </style>

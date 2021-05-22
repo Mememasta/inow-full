@@ -3,7 +3,7 @@
       <b-navbar toggleable="lg" type="dark" variant="info">
         
         <div>
-          <b-button v-b-toggle.sidebar-backdrop>Меню</b-button>
+          <b-button v-b-toggle.sidebar-backdrop variant="info">Меню</b-button>
           <b-sidebar id="sidebar-backdrop" title="" backdrop shadow>
             <template #default="{ hide }">
               <div class="px-3 py-2">

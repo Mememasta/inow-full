@@ -8,7 +8,7 @@
       </div>
 
       <div class="first_block_img">
-        <img src="../assets/img/bicycle.png" width="100%">
+        <img src="../assets/img/gerb.png" width="40%" style="margin-left:30%;">
       </div>
         
     </div>
@@ -17,41 +17,49 @@
 
     <div class="second_block">
 
-      <div class="second_block_img">
-        <img src="../assets/img/bicycle.png" width="100%">
-      </div>
-
-      <div class="second_block_description">
-        <h3 class="" style="color:white;">
-          Данная плаформа создана для развития спорта в Ямало-Ненецкого автономного округа.
-          Здесь вы можете арендовать спортивное оборудование, узнать о мероприятиях и поучавтсвовать в соревнованиях.
+        <h3 class="second_block_head">
+          Данная платформа создана для развития спорта в Ямало-Ненецком автономном округе.
         </h3>
-      </div>
 
     </div>
+
+
 
 
     <div class="you_may">
 
       <div class="you_may_head">
-        <h1> У нас на площадке можно: </h1>
+        <h1> У нас на площадке вы можете: </h1>
       </div>
 
-      <div class="body">
-        <div class="you_may_blocks_left">
-          <h1> 1</h1>
-        </div>
 
+      <div class="you_may_blocks zoom">
+        <h2> 1. Узнать о спортивных мероприятиях </h2>
       </div>
 
-      <div class="body">
-
-        <div class="you_may_blocks_right">
-          <h1> 2 </h1>
-        </div>
+      <div class="you_may_blocks zoom">
+        <h2> 2. Узнать о нахождениях и расписании спортивных объектов </h2>
+      </div>
       
+      <div class="you_may_blocks zoom">
+        <h2> 3. Арендовать спортивный инвертарь у людей или сдать свой </h2>
       </div>
+
     </div>
+
+
+    <div class="bus_and_people">
+      <div class="people">
+        <h2 class="bus_and_people_head"> Для пользователей </h2>
+        <h4> 1. Возможность заниматься спортом </h4>
+        <h4> 2. Получать актуальную информацию </h4>
+      </div>
+      <div class="bus">
+        <h2 class="bus_and_people_head"> Для бизнеса </h2>
+        <h4> 1. Возможность разместить товар на площадке </h4>
+        <h4> 2. Привлечение клиентов </h4>
+      </div>
+    </div>   
 
       
 
@@ -60,43 +68,52 @@
 
         
 
-    <div class="sig_log">
+    <div class="sig_log_block">
 
-      <div class="card container form-signin text-center" style="width: 30em; border-radius: 15px">
-        <b-form >
-            <h1 class="h3 m-4 font-weight-normal">Вход</h1>
+      <div class="sig_log">
 
-            <b-form-group id="email" label-for="email">
-                <b-form-input
-                    id="email"
-                    v-model="form.username"
-                    type="email"
-                    required
-                    placeholder="Введите email"
-                ></b-form-input>
-            </b-form-group>
+        <div class="card container form-signin text-center" style="width: 30em; border-radius: 15px">
+          <b-form >
+              <h1 class="h3 m-4 font-weight-normal">Вход</h1>
 
-            <b-form-group id="password" label-for="password">
-                <b-form-input
-                    id="password"
-                    v-model="form.password"
-                    type="password"
-                    required
-                    placeholder="Введите пароль"
-                ></b-form-input>
-            </b-form-group>
+              <b-form-group id="email" label-for="email">
+                  <b-form-input
+                      id="email"
+                      v-model="form.username"
+                      type="email"
+                      required
+                      placeholder="Введите email"
+                  ></b-form-input>
+              </b-form-group>
 
-            <b-form-group id="input-group-4">
-                <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                    <b-form-checkbox value="me">Запомнить</b-form-checkbox>
-                </b-form-checkbox-group>
-            </b-form-group>
+              <b-form-group id="password" label-for="password">
+                  <b-form-input
+                      id="password"
+                      v-model="form.password"
+                      type="password"
+                      required
+                      placeholder="Введите пароль"
+                  ></b-form-input>
+              </b-form-group>
 
-            <b-button type="submit" variant="primary" block>Войти</b-button>
+              <b-form-group id="input-group-4">
+                  <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
+                      <b-form-checkbox value="me">Запомнить</b-form-checkbox>
+                  </b-form-checkbox-group>
+              </b-form-group>
 
-            <br />
+              <b-button type="submit" variant="primary" block>Войти</b-button>
 
-        </b-form>
+              <br />
+
+          </b-form>
+        </div>
+
+      </div>
+
+      <div class="sig_log_head_block">
+        <h1 class="sig_log_head"> Спорт - это жизнь. </h1>
+        <h1 class="sig_log_head"> Присоединяйся к нам прямо сейчас! </h1>
       </div>
 
     </div>
@@ -160,6 +177,7 @@ export default {
   background-color: #f1f1f3;
   top: 0;
   bottom: 0;
+  padding: 2%;
 }
 
 .first_block_name{
@@ -171,8 +189,8 @@ export default {
 }
 
 .first_block_name_title{
-  font-size: 72px;
-  text-align: center;;
+  font-size: 86px;
+  text-align: right;
 }
 
 .second_block {
@@ -186,50 +204,96 @@ export default {
   bottom: 0;
 }
 
-.second_block_description{
-  width: 70%;
-  padding: 0% 10%;
+.second_block_head{
+  padding: 5%;
+  color: white;
+  font-size: 32px;
 }
 
-.second_block_img{
-  width: 30%;
-}
 
-.sig_log{
-  background: white;
-  padding: 5% 0%;
-}
 
 .you_may {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   align-items: center;
   height: 100%;
-  background-color: #c5dbb7;
+  background-color: #f5f5f5;
   top: 0;
   bottom: 0;
+  padding: 4%;
 }
 
 .you_may_head{
   text-align: center;
   width: 100%;
+  padding: 0% 0% 2% 0%;
 }
 
-.you_may_body{
-  width: 100%;
+.you_may_blocks{
+  text-align: center;
+  background: #cef3e4;
+  width: 70%;
+  padding: 1%;
+  margin-left: 15%;
+  margin-bottom: 1%;
+  border-radius: 25px;
 }
 
-.you_may_blocks_left{
-  background: #2f32ce;
+
+.bus_and_people{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.bus{
+  width: 50%;
+  background: #ebe6b9;
+  text-align: center;
+  padding: 2%;
+}
+
+.people{
+  width: 50%;
+  background: #e9bdd8;
+  text-align: center;
+  padding: 2%;
+}
+
+.bus_and_people_head{
+  margin-bottom: 3%;
+  text-decoration: underline;
+}
+
+
+.sig_log_block{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+  background-color: #f5f5f5;
+  top: 0;
+  bottom: 0;
+  padding: 2%;
+}
+
+.sig_log{
+  padding: 5% 0%;
   width: 40%;
-  margin-left: 20%;
 }
 
-.you_may_blocks_right{
-  background: #b361e2;
-  width: 40%;
-  margin-left: 40%;
+.sig_log_head_block{
+  width: 60%;
 }
+
+.sig_log_head{
+  text-align: center;
+}
+
+
+
 
 </style>

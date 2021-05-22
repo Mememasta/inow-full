@@ -5,20 +5,43 @@
 
     <div class="exchange_block">
 
+      
       <div class="exchange_block_1">
         <h3>Аренда лыж</h3>
         <hr>
-        <img src="../../assets/img/ski.png" width="100%">
-        <h4>150 рублей за 2 часа</h4>
+        <img src="../../assets/img/fischer.jpeg" width="100%">
+        <br>
+        <br>
+        <h3>Нина Иванова</h3>
+        <h4>Телефон: +7 (948) 452-78-93</h4>
+        <h4>Цена: 250 рублей за 1 час</h4>
+        <h4>Описание: Лыжи Fischer, парафин на -10 градусов</h4>
+      </div>
+
+      <div class="exchange_block_1">
+        <h3>Аренда велосипеда</h3>
+        <hr>
+        <img src="../../assets/img/rent_by.jpg" width="100%">
+        <br>
+        <br>
+        <h3>Алексей Филатов</h3>
+        <h4>Телефон: +7 (957) 154-78-48</h4>
+        <h4>Цена: 150 рублей за 1 час</h4>
+        <h4>Описание: Велосипед Forward, в идеальном состоянии, дисковые тормоза</h4>
+      </div>
+
+      <div class="exchange_block_1">
+        <h3>Аренда лыж</h3>
+        <hr>
+        <img src="../../assets/img/fischer.jpeg" width="100%">
+        <h4>250 рублей за 2 часа</h4>
         <div>
 
           <h5> Время начала аренды </h5>
           <b-form-timepicker v-model="value" locale="en"></b-form-timepicker>
-          <div class="mt-2">Время: '{{ value }}'</div>
 
           <h5> Время окончания аренды </h5>
           <b-form-timepicker v-model="value_1" locale="en"></b-form-timepicker>
-          <div class="mt-2">Время: '{{ value_1 }}'</div>
 
           <b-button>Забронировать</b-button>
 
@@ -28,9 +51,22 @@
       <div class="exchange_block_1">
         <h3>Аренда велосипеда</h3>
         <hr>
-        <img src="../../assets/img/bicycle.jpg" width="100%">
+        <img src="../../assets/img/rent_by.jpg" width="100%">
         <h4>150 рублей за 2 часа</h4>
-      </div>
+        <div>
+
+          <h5> Время начала аренды </h5>
+          <b-form-timepicker v-model="value" locale="en"></b-form-timepicker>
+
+          <h5> Время окончания аренды </h5>
+          <b-form-timepicker v-model="value_1" locale="en"></b-form-timepicker>
+
+          <b-button>Забронировать</b-button>
+
+        </div>
+      </div>  
+
+
 
     </div>
    
