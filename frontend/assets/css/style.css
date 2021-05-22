@@ -1,0 +1,131 @@
+/* Общие стили */
+
+.flex{display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+  
+  
+  
+/*Приближение*/
+.zoom {
+    transition: transform .3s; /* Animation */
+}
+.zoom:hover {
+    transform: scale(1.05); /* 1 -это 1 к 1, для увеличения писать больше 1 */
+}
+@media (max-width: 576px){
+    .zoom:hover {
+        transform: scale(1); /* 1 -это 1 к 1, для увеличения писать больше 1 */
+    }
+}
+
+
+.non_decoration{
+    text-decoration: none;
+    color: black;
+    
+}
+
+.non_decoration:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*Загаловки*/
+.heading {
+    font-size: 64px;
+}
+.heading_profile {
+    font-size: 64px;
+}
+.heading_base {
+    font-weight: 10px;
+    font-size: 52px;
+}
+.heading_base_project {
+    font-weight: 150;
+    font-size: 48px;
+    color: #333333
+}
+.heading_project {
+    font-weight: 600;
+    font-size: 32px;
+}
+.base_cg{
+    color: #333333
+}
+@media (max-width:1200px){
+    .heading{
+        font-size: 64px;
+    }
+    .heading_profile{
+        font-size: 64px;
+    }
+    .heading_base_project {
+        font-size: 46px;
+    }
+}
+@media (max-width:992px){
+    .heading{
+        font-size: 56px;
+    }
+    .heading_profile {
+        font-size: 56px;
+    }
+    .heading_base_project {
+        font-size: 42px;
+    }
+}
+@media (max-width:767px){
+    .heading{
+        font-size: 52px;
+    }
+    .heading_profile{
+        font-size: 52px;
+    }
+    .heading_base_project {
+        font-size: 36px;
+    }
+}
+@media (max-width:450px){
+    .heading{
+        font-size: 42px;
+    }
+    .heading_profile{
+        font-size: 42px;
+    }
+    .heading_base_project {
+        font-size: 34px;
+        font-weight: 250;
+    }
+    .heading_base {
+        font-size: 44px;
+        font-weight: 350;
+    }
+    .base_cg{
+        font-size: 24px;
+        font-weight: 350;
+    }
+    .heading_project {
+        font-size: 24px;
+    }
+    .text_project {
+        font-size: 14px;
+    }
+}
+@media (max-width:365px){
+    .heading{
+        font-size: 36px;
+    }
+    .heading_profile{
+        font-size: 36px;
+    }
+    .heading_base_project {
+        font-size: 32px;
+    }
+}
+  

@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "corp_portal"
+version = "0.1.0"
+description = ""
+authors = ["pupa <fghjklbqw@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = {extras = ["all"], version = "^0.65.0"}
+ormar = {extras = ["postgresql"], version = "^0.10.6"}
+python-dotenv = "^0.17.1"
+jose = {extras = ["all"], version = "^1.0.0"}
+passlib = "^1.7.4"
+jwt = "^1.2.0"
+emails = "^0.6"
+python-jose = "^3.2.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
