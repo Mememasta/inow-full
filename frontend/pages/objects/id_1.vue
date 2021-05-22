@@ -77,4 +77,8 @@ export default {
   }
 }
 
+img{
+  border-radius: 25px;
+}
+
 </style>

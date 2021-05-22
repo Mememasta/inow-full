@@ -10,12 +10,11 @@
                 <nav class="mb-3">
                   <b-nav vertical>
                     <b-nav-item to="/users/me" @click="hide"><h2> Чучалов Марат </h2></b-nav-item>
-                    <b-nav-item to="/services" @click="hide"> Сервисы </b-nav-item>                    
-                    <b-nav-item to="/objects" @click="hide"> Спортивные объекты </b-nav-item>
                     <b-nav-item to="/events" @click="hide"> Спортиивные мероприятия </b-nav-item>
+                    <b-nav-item to="/objects" @click="hide"> Спортивные объекты </b-nav-item>            
                     <b-nav-item to="/exchange" @click="hide"> Аренда от людей </b-nav-item>
+                    <b-nav-item to="/services" @click="hide"> Сервисы </b-nav-item>                    
                     <b-nav-item to="/" @click="hide"> Связаться с нами (Telegram) </b-nav-item>
-
                   </b-nav>
                 </nav>
               </div>

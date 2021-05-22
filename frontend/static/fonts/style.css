@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Graphik';
+    src: local('Graphik Extra light'), local('Graphik-Extra-light'),
+        url('Graphik-Extralight.woff2') format('woff2'),
+        url('Graphik-Extralight.woff') format('woff'),
+        url('Graphik-Extralight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+  }

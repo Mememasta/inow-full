@@ -49,6 +49,9 @@
 
 <script>
 export default {
-  layout: "MainLayout",
-  }
+    layout: "MainLayout",
+    head: {
+        title: 'Главная',
+    }
+}
 </script>

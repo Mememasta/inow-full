@@ -15,7 +15,7 @@ class SportEvent(ormar.Model):
     id: int = ormar.Integer(primary_key=True)
     name: str = ormar.String(max_length=128)
     description: str = ormar.String(max_length=512)
-    event_date: datetime.datetime = ormar.DateTime(default=datetime.datetime.utcnow)
+    event_date: datetime.datetime = ormar.DateTime(default=datetime.datetime.utcnow())
     photo_path: str = ormar.String(max_length=1024)
     checked: bool = ormar.Boolean(default=False)
 

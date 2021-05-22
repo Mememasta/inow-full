@@ -23,7 +23,7 @@
       </div>
 
       <div class="">
-        <img src="../../assets/img/ski_event.jpg" width="80%" style="margin:3% 10%">
+        <img src="../../assets/img/ski_event.jpg" width="80%" style="margin:3% 10%;">
       </div>
 
 
@@ -54,4 +54,7 @@ export default {
   background: #defcf7;
 }
 
+img{
+  border-radius: 25px;
+}
 </style>

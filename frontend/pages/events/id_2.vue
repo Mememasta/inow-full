@@ -53,4 +53,8 @@ export default {
   background: #defcf7;
 }
 
+img{
+  border-radius: 25px;
+}
+
 </style>

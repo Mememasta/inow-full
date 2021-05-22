@@ -36,10 +36,37 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://go.nuxtjs.dev/content
+    '@nuxt/content',
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+      baseURL: "https://pupa.cf/api/v1/"
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+            property: 'access_token',
+            // type: 'Bearer',
+            // maxAge: 1800
+        },
+        user: {
+            property: false,
+            autoFetch: true
+        },
+        endpoints: {
+            login: {url: 'login/access-token', method: 'post'},
+            user: {url: 'users/me', method: 'get'},
+            logout: false
+        }
+      },
+    }
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -50,5 +77,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+      babel: {
+          compact: true
+      }
   }
 }

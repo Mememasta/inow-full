@@ -1,4 +1,4 @@
-<template>
+<template class="gym-fon">
   <div class="container" style="margin-top:25px">
     <h1> Сервисы </h1>
     <hr>
@@ -43,6 +43,13 @@ export default {
 </script>
 
 <style  scoped>
+.gym-fon {
+background: url(@/assets/img/gym-fon.png) center/cover no-repeat;
+    background-size: cover;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;}
 
 .services_block{
   display: flex;
