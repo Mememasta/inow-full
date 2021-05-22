@@ -62,6 +62,14 @@ export default {
   background: #defcf7;
 }
 
+@media (max-width:565px){
+  .services_block_1{
+    width: 100%;
+    padding: 2%;
+    border-radius: 25px;
+    background: #defcf7;
+  }
+}
 
 
 </style>

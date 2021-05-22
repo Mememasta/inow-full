@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="object_block_img">
-        <img src="../../assets/img/football.jpg" width="80%" style="margin-left:15%">
+        <img src="../../assets/img/football.jpg" width="80%" style="margin-left:15%;">
       </div>
 
     </div>
@@ -58,6 +58,23 @@ export default {
 .object_block_img{
   width: 50%;
   padding: 2%;
+}
+
+@media (max-width:565px){
+  .object_block_text{
+    width: 100%;
+    padding: 2%;
+    position: relative;
+  }
+  .object_block_text_1{
+    position: relative;
+    top: 0%;
+  }
+  .object_block_img{
+    width: 100%;
+    padding: 2%;
+    margin-right: 10%;
+  }
 }
 
 </style>

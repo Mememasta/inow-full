@@ -9,10 +9,9 @@ from app.core import models, schemas
 class SportEventBase(BaseModel):
     name: str
     description: str
-    event_date: datetime.datetime = datetime.datetime.utcnow()
+    event_date: datetime.datetime = datetime.datetime.now()
     photo_path: str
-    organizer: str
-    checked: bool
+    checked: bool = False
 
 
 class SportEventCreate(SportEventBase):
@@ -26,7 +25,8 @@ class SportEventUpdate(SportEventBase):
 class SportEventSchema(SportEventBase):
     id: Optional[int]
 
-    user: Optional[schemas.UserSchema]
+    members: List[schemas.UserSchema]
+    organizer: Optional[schemas.UserSchema]
     
     class Config:
         orm_mode = True

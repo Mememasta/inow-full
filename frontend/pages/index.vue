@@ -29,21 +29,32 @@
     <div class="you_may">
 
       <div class="you_may_head">
-        <h1> У нас на площадке вы можете: </h1>
+        <h1 class="phone_text"> У нас на площадке вы можете: </h1>
       </div>
 
-
-      <div class="you_may_blocks zoom">
-        <h2> 1. Узнать о спортивных мероприятиях </h2>
-      </div>
-
-      <div class="you_may_blocks zoom">
-        <h2> 2. Узнать о нахождениях и расписании спортивных объектов </h2>
-      </div>
       
       <div class="you_may_blocks zoom">
-        <h2> 3. Арендовать спортивный инвертарь у людей или сдать свой </h2>
+          <NuxtLink to="/events" class="non_decoration">
+          <h2 class="phone_text"> 1. Узнать о спортивных мероприятиях </h2>
+          </NuxtLink>
       </div>
+      
+
+      
+      <div class="you_may_blocks zoom">
+        <NuxtLink to="/objects" class="non_decoration">
+          <h2 class="phone_text"> 2. Узнать о нахождениях и расписании спортивных объектов </h2>
+        </NuxtLink>
+      </div>
+      
+
+      
+      <div class="you_may_blocks zoom">
+        <NuxtLink to="/exchange" class="non_decoration">
+          <h2 class="phone_text"> 3. Арендовать спортивный инвертарь у людей или сдать свой </h2>
+        </NuxtLink>
+      </div>
+      
 
     </div>
 
@@ -193,6 +204,21 @@ export default {
   text-align: right;
 }
 
+@media (max-width:565px){
+  .first_block_name{
+    width: 100%;
+  }
+  .first_block_img{
+    width: 100%;
+  }
+  .first_block_name_title{
+    font-size: 42px;
+    text-align: center;
+  }
+}
+
+
+
 .second_block {
   display: flex;
   flex-wrap: wrap;
@@ -208,6 +234,15 @@ export default {
   padding: 5%;
   color: white;
   font-size: 32px;
+  text-align: center;
+}
+
+@media (max-width:565px){
+  .second_block_head{
+    padding: 5%;
+    font-size: 24px;
+    
+  }
 }
 
 
@@ -239,6 +274,21 @@ export default {
   border-radius: 25px;
 }
 
+@media (max-width:565px){
+  .you_may_blocks{
+    width: 90%;
+    padding: 4%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    border-radius: 25px;
+  }
+  .phone_text{
+    font-size: 24px;
+  }
+}
+
+
+
 
 .bus_and_people{
   display: flex;
@@ -268,6 +318,25 @@ export default {
   text-decoration: underline;
 }
 
+@media (max-width:565px){
+  .bus{
+    width: 100%;
+    background: #ebe6b9;
+    text-align: center;
+    padding: 2%;
+  }
+  .people{
+    width: 100%;
+    background: #e9bdd8;
+    text-align: center;
+    padding: 2%;
+  }
+  .bus_and_people_head{
+    margin-bottom: 3%;
+    text-decoration: underline;
+  }
+}
+
 
 .sig_log_block{
   display: flex;
@@ -293,6 +362,18 @@ export default {
   text-align: center;
 }
 
+
+@media (max-width:565px){
+  .sig_log{
+    display: none;
+  }
+  .sig_log_head_block{
+    width: 100%;
+  }
+  .sig_log_head{
+    text-align: center;
+  }
+}
 
 
 

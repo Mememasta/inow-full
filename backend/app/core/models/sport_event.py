@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import List, Optional
 import ormar
 import datetime
 
@@ -17,7 +17,8 @@ class SportEvent(ormar.Model):
     description: str = ormar.String(max_length=512)
     event_date: datetime.datetime = ormar.DateTime(default=datetime.datetime.utcnow)
     photo_path: str = ormar.String(max_length=1024)
-    organizer: str = ormar.String(max_length=128)
     checked: bool = ormar.Boolean(default=False)
 
-    user: Optional[User] = ormar.ForeignKey(User, nullable=True)
+
+    members: List[User] = ormar.ForeignKey(User, related_name="members", nullable=True)
+    organizer: Optional[User] = ormar.ForeignKey(User, related_name="organizer", nullable=True)

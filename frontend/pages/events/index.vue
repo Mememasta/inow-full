@@ -1,6 +1,15 @@
 <template>
   <div class="container" style="margin-top:25px">
-    <h1> Спортивные мероприятия. Новый Уренгой </h1>
+    <div class="flex">
+      <div class="name_block">
+        <h1> Спортивные мероприятия. Новый Уренгой </h1>
+      </div>
+      <div class="add_block">
+        <NuxtLink to="/events/add" class="non_decoration">
+          <h1> &#10010; </h1>
+        </NuxtLink>
+      </div>
+    </div>
     <hr>
 
     <div class="events_block">
@@ -59,7 +68,30 @@ export default {
   padding: 2%;
   border-radius: 25px;
   background: #defcf7;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
+}
+
+
+.name_block{
+  width: 90%;
+}
+
+.add_block{
+  width: 10%;
+}
+
+
+@media (max-width:565px){
+  .events_block_1{
+    margin-bottom: 5%;
+  }
+  .name_block{
+    width: 100%;
+  }
+
+  .add_block{
+    width: 100%;
+  }
 }
 
 </style>

@@ -21,5 +21,5 @@ class User(ormar.Model):
     second_name: str = ormar.String(max_length=32)
     hashed_password: str = ormar.String(max_length=256)
     is_superuser: bool = ormar.Boolean(default=False)
-    is_active: bool = ormar.Boolean(default=False)
+    is_active: bool = ormar.Boolean(default=True)
 

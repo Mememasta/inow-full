@@ -109,4 +109,13 @@ export default {
   background: #f5f5f5;
 }
 
+@media (max-width:565px){
+  .exchange_block_1{
+    width: 100%;
+    padding: 2%;
+    border-radius: 25px;
+    background: #f5f5f5;
+  }
+}
+
 </style>

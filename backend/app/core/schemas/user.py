@@ -8,7 +8,7 @@ class UserBase(BaseModel):
     first_name: str
     second_name: str
     is_superuser: Optional[bool] = False
-    is_active: Optional[bool] = False
+    is_active: Optional[bool] = True
 
 
 class UserCreate(UserBase):
