@@ -34,6 +34,25 @@
         </NuxtLink>
       </div>
 
+      <div v-for="event in events" :key="event.id" class="events_block_1 zoom">
+        <NuxtLink :to="`/events/${event.id}`" class="non_decoration">
+          <div>
+            <h2>{{ event.name }}</h2>
+            <hr>
+            <h3> 
+                {{
+                    new Date(event.event_date).toLocaleDateString("ru-RU")
+                }}
+                -
+                {{ 
+                    new Date(event.event_date).getHours() + ":" + new Date(event.event_date).getMinutes()
+                }}
+            </h3>
+            <h4>Участников: {{ event.members.length }}</h4>
+          </div>
+        </NuxtLink>
+      </div>
+
 
     </div>
    
@@ -44,8 +63,23 @@
 <script>
 export default {
     layout: "MainLayout",
+    middleware: "auth",
     head: {
-        title: 'Главная',
+        title: 'Мероприятия',
+    },
+    data() {
+        return {
+            events: [],
+            errors: []
+        }
+    },
+    created() {
+        this.$axios.get("/event").then(response => {
+            this.events = response.data
+        })
+        .catch(e => {
+            this.error.push(e)
+        })
     }
   }
 </script>

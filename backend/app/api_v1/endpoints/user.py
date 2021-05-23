@@ -8,6 +8,12 @@ from app.api_v1 import deps
 
 router = APIRouter()
 
+@router.get("/me", response_model=Optional[schemas.UserSchema])
+async def read_user_me(
+    current_user: models.User = Depends(deps.get_current_active_user)
+) -> Optional[models.User]:
+    return current_user
+
 @router.get("/{user_id}", response_model=Optional[schemas.UserSchema])
 async def get_user_by_id(
         *,
@@ -30,12 +36,6 @@ async def get_user_by_id(
                 detail="The user doesn't have enough privileges"
         )
     return user_by_id
-
-# @router.get("/me", response_model=Optional[schemas.UserSchema])
-# async def get_user_me(
-    # current_user: models.User = Depends(deps.get_current_active_user)
-# ) -> Optional[models.User]:
-    # return current_user
 
 @router.get("/", response_model=List[schemas.UserSchema])
 async def get_users(
@@ -61,7 +61,10 @@ async def create_user(
 async def create_user_open(
         *,
         email: EmailStr = Body(...),
-        password: str = Body(...)
+        password: str = Body(...),
+        phone_number: str = Body(...),
+        first_name: str = Body(...),
+        second_name: str = Body(...),
 ) -> models.User:
     user = await crud.user.get_by_email(email=email)
     if user:
@@ -69,7 +72,7 @@ async def create_user_open(
             status_code=400,
             detail="The user with this email already exists in the system"
         )
-    schema = schemas.UserCreate(password=password, email=email)
+    schema = schemas.UserCreate(password=password, email=email, first_name=first_name, second_name=second_name, phone_number=phone_number)
     return await crud.user.create(schema=schema)
 
 @router.put("/update/{user_id}", response_model=Optional[schemas.UserSchema])

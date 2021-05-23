@@ -1,6 +1,7 @@
 <template>
     <div class="card container form-signin text-center" style="width: 40em; border-radius: 15px">
-        <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+        <Notification :message="error" v-if="error"/>
+        <b-form @submit.prevent="register" v-if="show">
             <h1 class="h3 m-4 font-weight-normal">Регистрация</h1>
             <b-form-group
                 id="email"
@@ -8,10 +9,23 @@
             >
             <b-form-input
                 id="email"
-                v-model="form.email"
+                v-model="email"
                 type="email"
                 required
                 placeholder="Введите email"
+                ></b-form-input>
+            </b-form-group>
+
+            <b-form-group
+                id="phone_number"
+                label-for="phone_number"
+            >
+            <b-form-input
+                id="phone_number"
+                v-model="phone_number"
+                type="tel"
+                required
+                placeholder="Введите номер телефона"
                 ></b-form-input>
             </b-form-group>
 
@@ -21,7 +35,7 @@
             >
             <b-form-input
                 id="password"
-                v-model="form.password"
+                v-model="password"
                 type="password"
                 required
                 placeholder="Введите пароль"
@@ -29,35 +43,29 @@
             </b-form-group>
 
             <b-form-group
-                id="secondname"
-                label-for="secondname"
+                id="second_name"
+                label-for="second_name"
             >
             <b-form-input
-                id="secondname"
-                v-model="form.secondname"
-                type="text"
-                required
-                placeholder="Введите имя"
-                ></b-form-input>
-            </b-form-group>
-
-            <b-form-group
-                id="name"
-                label-for="name"
-            >
-            <b-form-input
-                id="name"
-                v-model="form.name"
+                id="second_name"
+                v-model="second_name"
                 type="text"
                 required
                 placeholder="Введите фамилию"
                 ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-4">
-                <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
-                    <b-form-checkbox value="true">Я согласен на обработку персональных данных</b-form-checkbox>
-                </b-form-checkbox-group>
+            <b-form-group
+                id="first_name"
+                label-for="first_name"
+            >
+            <b-form-input
+                id="first_name"
+                v-model="first_name"
+                type="text"
+                required
+                placeholder="Введите имя"
+                ></b-form-input>
             </b-form-group>
 
             <b-button type="submit" variant="primary" block>Зарегистрироваться</b-button>
@@ -78,9 +86,10 @@
     data() {
       return {
           email: '',
+          phone_number: '',
           password: '',
-          name: '',
-          secondname: '',
+          first_name: '',
+          second_name: '',
           show: true,
           error: ''
         };
@@ -88,9 +97,12 @@
     methods: {
         async register() {
           try {
-            await this.$axios.post('users/open', {
+            await this.$axios.post('user/open/create', {
                 email: this.email,
-                password: this.password
+                phone_number: this.phone_number,
+                password: this.password,
+                first_name: this.first_name,
+                second_name: this.second_name,
             })
             const params = new URLSearchParams();
             params.append('username', this.email);

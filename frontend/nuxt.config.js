@@ -36,15 +36,13 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
     // https://auth.nuxtjs.org/
     '@nuxtjs/auth-next',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-      baseURL: "https://pupa.cf/api/v1/"
+      baseURL: "http://localhost:8000/api/v1/"
   },
 
   auth: {
@@ -61,7 +59,7 @@ export default {
         },
         endpoints: {
             login: {url: 'login/access-token', method: 'post'},
-            user: {url: 'users/me', method: 'get'},
+            user: {url: 'user/me', method: 'get'},
             logout: false
         }
       },
